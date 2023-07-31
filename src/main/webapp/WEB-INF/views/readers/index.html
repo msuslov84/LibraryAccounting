@@ -7,11 +7,11 @@
 <body>
 <h3>Список пользователей библиотеки</h3>
 <div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}"
+    <a th:href="@{/readers/{id}(id=${person.getId()})}"
        th:text="${person.getName + ', ' + person.getYear()}">person</a>
 </div>
 <hr/>
-<a th:href="@{/people/new}">Добавить человека</a>
+<a th:href="@{/readers/new}">Добавить человека</a>
 <br/>
 <br/>
 <a th:href="@{/books}">Перейти к списку книг</a>

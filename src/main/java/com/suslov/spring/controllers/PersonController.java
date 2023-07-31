@@ -63,7 +63,6 @@ public class PersonController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @PathVariable("id") int id) {
-        validator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "readers/edit";
         }
