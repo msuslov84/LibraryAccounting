@@ -29,7 +29,7 @@ public class Book {
     @Column(name = "year")
     private int year;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person owner;
 

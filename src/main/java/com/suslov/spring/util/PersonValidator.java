@@ -1,7 +1,7 @@
 package com.suslov.spring.util;
 
-import com.suslov.spring.dao.PersonDAO;
 import com.suslov.spring.models.Person;
+import com.suslov.spring.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -10,11 +10,11 @@ import org.springframework.validation.Validator;
 @Component
 public class PersonValidator implements Validator {
 
-    private final PersonDAO personDAO;
+    private final PersonService service;
 
     @Autowired
-    public PersonValidator(PersonDAO personDAO) {
-        this.personDAO = personDAO;
+    public PersonValidator(PersonService service) {
+        this.service = service;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class PersonValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
-        if (personDAO.getByName(person.getName()).isPresent()) {
+        if (service.getByName(person.getName()).isPresent()) {
             errors.rejectValue("name", "", "There already exists a person with this full name");
         }
     }
