@@ -1,11 +1,17 @@
 package com.suslov.spring.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "person")
 public class Person {
 
+    @Id
     private int id;
     @NotEmpty(message = "Full name should not be empty")
     @Size(min = 3, max = 100, message = "Full name length should be between 3 and 100 characters")
@@ -13,12 +19,12 @@ public class Person {
     @Min(value = 1900, message = "Year of birth should be over 1900")
     private int year;
 
+    public Person() {
+    }
+
     public Person(String name, int year) {
         this.name = name;
         this.year = year;
-    }
-
-    public Person() {
     }
 
     public int getId() {

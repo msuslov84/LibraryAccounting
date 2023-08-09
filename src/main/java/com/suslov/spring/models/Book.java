@@ -1,20 +1,44 @@
 package com.suslov.spring.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
+@Entity
+@Table(name = "book")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private int id;
+
     @NotEmpty(message = "Title should not be empty")
     @Size(min = 2, max = 100, message = "Title length should be between 2 and 100 characters")
+    @Column(name = "title")
     private String title;
+
     @NotEmpty(message = "Author name should be filled")
     @Size(min = 2, max = 100, message = "Author name length should be between 2 and 100 characters")
+    @Column(name = "author")
     private String author;
+
     @Min(value = 1500, message = "Year of publication should be over 1500")
+    @Column(name = "year")
     private int year;
+
+    @OneToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+    private Person owner;
+
+    @Column(name = "assigned_from")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date assignedFrom;
+
+    @Transient
+    private boolean overdue;
 
     public Book() {
     }
@@ -55,5 +79,29 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
+
+    public Date getAssignedFrom() {
+        return assignedFrom;
+    }
+
+    public void setAssignedFrom(Date assignedFrom) {
+        this.assignedFrom = assignedFrom;
+    }
+
+    public boolean isOverdue() {
+        return overdue;
+    }
+
+    public void setOverdue(boolean overdue) {
+        this.overdue = overdue;
     }
 }

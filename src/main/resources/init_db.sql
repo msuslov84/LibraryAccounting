@@ -11,7 +11,8 @@ CREATE TABLE book
     title     VARCHAR NOT NULL,
     author    VARCHAR NOT NULL,
     year      INT     NOT NULL,
-    person_id INT     REFERENCES person (person_id) ON DELETE SET NULL
+    person_id INT     REFERENCES person (person_id) ON DELETE SET NULL,
+    assigned_from TIMESTAMP
 );
 
 -- Test data
