@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Страница со списком всех людей</title>
+    <title>Library: the readers list</title>
 </head>
 <body>
-<h3>Список пользователей библиотеки</h3>
+<h3>The readers list</h3>
 <div th:each="person : ${people}">
     <a th:href="@{/readers/{id}(id=${person.getId()})}"
        th:text="${person.getName + ', ' + person.getYear()}">person</a>
 </div>
 <hr/>
-<a th:href="@{/readers/new}">Добавить человека</a>
+<a th:href="@{/readers/new}">Add person to the readers</a>
 <br/>
 <br/>
-<a th:href="@{/books}">Перейти к списку книг</a>
+<a th:href="@{/books}">Go to the book list</a>
 </body>
 </html>

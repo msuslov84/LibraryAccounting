@@ -41,7 +41,9 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public String show(Model model, @PathVariable("id") int id) {
+    public String show(Model model,
+                       @PathVariable("id") int id,
+                       @ModelAttribute("person") Person person) {
         Optional<Person> owner = bookService.getOwner(id);
         if (owner.isPresent()) {
             model.addAttribute("owner", owner.get());
@@ -73,7 +75,8 @@ public class BookController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+    public String create(@ModelAttribute("book") @Valid Book book,
+                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "books/new";
         }
@@ -82,7 +85,8 @@ public class BookController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult,
+    public String update(@ModelAttribute("book") @Valid Book book,
+                         BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors()) {
             return "books/edit";

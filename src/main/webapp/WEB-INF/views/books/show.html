@@ -2,36 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Страница книги</title>
+    <title>Library: the book</title>
 </head>
 <body>
-<h3>Страница книги</h3>
+<h3>The book information</h3>
 <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">title</p>
 
 <div th:if="${owner}">
-    <span th:text="'Книга сейчас у: ' + ${owner.getName()}"/>
+    <span th:text="'The book is taken by: ' + ${owner.getName()}"/>
     <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
-        <input type="submit" value="Освободить книгу">
+        <input type="submit" value="Release book">
     </form>
 </div>
 <div th:if="${people}">
-    <span th:text="'Эта книга свободна. Кому назначить ее?'"/>
+    <span th:text="'The book is free. To whom to assign it?'"/>
     <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
-        <label for="person">Выберите человека </label>
+        <label for="person">Choose a reader </label>
         <select th:object="${person}" th:field="*{id}" id="person">
             <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getName()}"/>
         </select>
-        <input type="submit" value="Назначить"/>
+        <input type="submit" value="Assign"/>
     </form>
 </div>
 
 <hr/>
 <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
-    <input type="submit" value="Редактировать"/>
+    <input type="submit" value="Edit"/>
 </form>
 <br/>
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
-    <input type="submit" value="Удалить"/>
+    <input type="submit" value="Delete"/>
 </form>
 </body>
 </html>
