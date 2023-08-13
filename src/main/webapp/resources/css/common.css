@@ -1,0 +1,40 @@
+.header-field {
+    height: 100px;
+    line-height: 100px;
+    width: 100%;
+    background: var(--header-background);
+}
+
+.title-page {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 16px;
+    font-family: Arial, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    color: var(--header-text-color);
+}
+
+.title-reference {
+    margin-left: 36px;
+    font-family: Arial, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.title-reference-color {
+    color: var(--main-reference-color);
+}
+
+.text-anchor {
+    text-decoration: none;
+}
+
+.text-anchor:hover {
+    opacity: 0.8;
+    color: var(--anchor-color);
+    text-decoration: underline;
+}
+
