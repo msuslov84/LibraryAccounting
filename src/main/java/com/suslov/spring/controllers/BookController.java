@@ -65,6 +65,13 @@ public class BookController {
         return "books/edit";
     }
 
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        bookService.delete(id);
+        return "redirect:/books";
+    }
+
+
     @GetMapping("/search")
     public String search(Model model, @RequestParam(value = "query", required = false) String query) {
         if (query != null) {
@@ -108,9 +115,9 @@ public class BookController {
         return "redirect:/books/" + id;
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        bookService.delete(id);
-        return "redirect:/books";
-    }
+//    @DeleteMapping("/{id}")
+//    public String delete(@PathVariable("id") int id) {
+//        bookService.delete(id);
+//        return "redirect:/books";
+//    }
 }

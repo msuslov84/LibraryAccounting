@@ -2,9 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="resources/css/themes/main.css">
+    <link rel="stylesheet" href="resources/css/common.css">
     <title>Library: the readers list</title>
 </head>
 <body>
+<div th:insert="~{fragments/header :: #header-section}"></div>
+
 <h3>The readers list</h3>
 <div th:each="person : ${people}">
     <a th:href="@{/readers/{id}(id=${person.getId()})}"
@@ -15,5 +19,7 @@
 <br/>
 <br/>
 <a th:href="@{/books}">Go to the book list</a>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
 </body>
 </html>

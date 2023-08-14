@@ -1,11 +1,10 @@
-.header-field {
+.header {
     height: 100px;
-    line-height: 100px;
     width: 100%;
     background: var(--header-background);
 }
 
-.title-page {
+.header-title {
     white-space: nowrap;
     overflow: hidden;
     margin-left: 16px;
@@ -16,7 +15,70 @@
     color: var(--header-text-color);
 }
 
-.title-reference {
+.header-text-anchor {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 35px 0 0 25%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header-text-anchor:hover {
+    opacity: 0.8;
+    color: var(--anchor-color);
+    text-decoration: underline;
+}
+
+.footer {
+    height: 100px;
+    width: 100%;
+
+    position:absolute;
+    bottom:0;
+
+    font-family: Arial, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+
+    display: table;
+
+    color: var(--footer-text-color);
+    background: var(--header-background);
+}
+
+.footer-text-anchor {
+    color: var(--footer-anchor-color);
+    text-decoration: none;
+}
+
+.footer-text-anchor:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.footer a {
+    display:table-cell;
+    vertical-align:middle;
+}
+
+.footer div {
+    width: 100%;
+    text-align: center;
+}
+
+.main-reference-wrapper {
+    height: 100%;
+    min-width: 610px;
+    width: 50%;
+    margin: 0 0 0 25%;
+    display: block;
+}
+
+.main-reference {
     margin-left: 36px;
     font-family: Arial, serif;
     font-style: normal;
@@ -24,8 +86,15 @@
     font-size: 18px;
 }
 
-.title-reference-color {
+.main-reference-color {
     color: var(--main-reference-color);
+}
+
+.scrollable-panel {
+    height: calc(100vh - 200px);
+    width: 100%;
+    margin: 0;
+    overflow: auto;
 }
 
 .text-anchor {
@@ -38,3 +107,10 @@
     text-decoration: underline;
 }
 
+.no-underline-anchor {
+    text-decoration: none;
+}
+
+.no-underline-anchor:hover {
+    opacity: 0.8;
+}
