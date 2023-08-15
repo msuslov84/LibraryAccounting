@@ -5,7 +5,7 @@
     <link rel="stylesheet" th:href="@{css/themes/main.css}">
     <link rel="stylesheet" th:href="@{css/common.css}">
     <link rel="stylesheet" th:href="@{css/list-page.css}">
-    <title>Library: the book list</title>
+    <title>Library: books</title>
 </head>
 <body>
 <div th:insert="~{fragments/header :: #header-section}"></div>
@@ -37,7 +37,7 @@
                 <tr class="t-body" th:each="book : ${books}">
                     <td class="title-column">
                         <a class="list-reference" th:href="@{/books/{id}(id=${book.getId()})}"
-                           th:text="${book.getTitle() + ', ' + book.getAuthor() + ', '+ book.getYear()}">book</a>
+                           th:text="${book.getTitle() + ', ' + book.getAuthor() + ', '+ book.getPublicationYear()}">book</a>
                     </td>
 
                     <td class="img-column">

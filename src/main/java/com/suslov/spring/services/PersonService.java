@@ -54,7 +54,7 @@ public class PersonService {
     }
 
     public Optional<Person> getByName(String name) {
-        return repository.findByName(name);
+        return repository.findByFullName(name);
     }
 
     public List<Book> getBooksByPersonId(int id) {

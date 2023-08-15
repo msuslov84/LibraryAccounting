@@ -18,9 +18,9 @@
         <span th:text="'Books not found'"/>
     </div>
     <div th:each="book : ${books}">
-        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">title</p>
+        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">title</p>
         <div th:if="${book.getOwner() != null}">
-            <span th:text="'The book is taken now by: ' + ${book.getOwner().getName()}"/>
+            <span th:text="'The book is taken now by: ' + ${book.getOwner().getFullName()}"/>
         </div>
         <div th:if="${book.getOwner() == null}">
             <span th:text="'The book is free'"/>

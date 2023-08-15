@@ -25,7 +25,7 @@ public class PersonValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
-        if (service.getByName(person.getName()).isPresent()) {
+        if (service.getByName(person.getFullName()).isPresent()) {
             errors.rejectValue("name", "", "There already exists a person with this full name");
         }
     }

@@ -18,11 +18,11 @@ public class Person {
     @NotEmpty(message = "Full name should not be empty")
     @Size(min = 3, max = 100, message = "Full name length should be between 3 and 100 characters")
     @Column(name = "name")
-    private String name;
+    private String fullName;
 
     @Min(value = 1900, message = "Year of birth should be over 1900")
     @Column(name = "year")
-    private int year;
+    private int yearOfBirth;
 
     @OneToMany(mappedBy = "owner")
     private List<Book> books;
@@ -30,9 +30,9 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, int year) {
-        this.name = name;
-        this.year = year;
+    public Person(String fullName, int yearOfBirth) {
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
     }
 
     public int getId() {
@@ -43,20 +43,20 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public int getYear() {
-        return year;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 
     public List<Book> getBooks() {

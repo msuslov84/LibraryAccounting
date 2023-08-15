@@ -4,7 +4,7 @@
     <meta charset="UTF-8" content="text/html">
     <link rel="stylesheet" href="css/themes/main.css">
     <link rel="stylesheet" href="css/common.css">
-    <title>Welcome to the library</title>
+    <title>Library</title>
 </head>
 <body>
 

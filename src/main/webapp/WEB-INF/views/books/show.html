@@ -6,10 +6,10 @@
 </head>
 <body>
 <h3>The book information</h3>
-<p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">title</p>
+<p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">title</p>
 
 <div th:if="${owner}">
-    <span th:text="'The book is taken by: ' + ${owner.getName()}"/>
+    <span th:text="'The book is taken by: ' + ${owner.getFullName()}"/>
     <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
         <input type="submit" value="Release book">
     </form>
@@ -19,7 +19,7 @@
     <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
         <label for="person">Choose a reader </label>
         <select th:object="${person}" th:field="*{id}" id="person">
-            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getName()}"/>
+            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"/>
         </select>
         <input type="submit" value="Assign"/>
     </form>

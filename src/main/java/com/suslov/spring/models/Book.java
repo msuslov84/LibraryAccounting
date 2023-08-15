@@ -27,7 +27,7 @@ public class Book {
 
     @Min(value = 1500, message = "Year of publication should be over 1500")
     @Column(name = "year")
-    private int year;
+    private int publicationYear;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
@@ -43,10 +43,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author, int year) {
+    public Book(String title, String author, int publicationYear) {
         this.title = title;
         this.author = author;
-        this.year = year;
+        this.publicationYear = publicationYear;
     }
 
     public int getId() {
@@ -73,12 +73,12 @@ public class Book {
         this.author = author;
     }
 
-    public int getYear() {
-        return year;
+    public int getPublicationYear() {
+        return publicationYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
     }
 
     public Person getOwner() {

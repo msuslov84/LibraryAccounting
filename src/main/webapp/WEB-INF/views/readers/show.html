@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>The reader information</h2>
-<p th:text="${person.getName() + ', ' + person.getYear()}">name</p>
+<p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">name</p>
 
 <div th:if="${books.isEmpty()}">
     <p th:text="'The man has not picked up any books yet'"/>

@@ -2,23 +2,63 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="resources/css/themes/main.css">
-    <link rel="stylesheet" href="resources/css/common.css">
-    <title>Library: the readers list</title>
+    <link rel="stylesheet" th:href="@{css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{css/common.css}">
+    <link rel="stylesheet" th:href="@{css/list-page.css}">
+    <title>Library: readers</title>
 </head>
 <body>
 <div th:insert="~{fragments/header :: #header-section}"></div>
 
-<h3>The readers list</h3>
-<div th:each="person : ${people}">
-    <a th:href="@{/readers/{id}(id=${person.getId()})}"
-       th:text="${person.getName + ', ' + person.getYear()}">person</a>
+<div class="page-title-field">
+    <div class="page-title-align">
+        <img th:src="@{images/person.png}" alt=""/>
+    </div>
 </div>
-<hr/>
-<a th:href="@{/readers/new}">Add person to the readers</a>
-<br/>
-<br/>
-<a th:href="@{/books}">Go to the book list</a>
+
+<div class="scrollable-panel">
+    <div class="table-wrapper">
+        <div class="add-book">
+            <a class="no-underline-anchor" th:href="@{/readers/new}">
+                <img th:src="@{images/add.png}" alt=""/>
+            </a>
+            <a class="text-anchor" th:href="@{/readers/new}">
+                <p class="add-book-title">Add new reader</p>
+            </a>
+        </div>
+        <div class="elements-list">
+            <table>
+                <tr class="t-header">
+                    <th class="title-column">Full name</th>
+                    <th class="title-column">Year of birth</th>
+                    <th class="img-column">Edit</th>
+                    <th class="img-column">Delete</th>
+                </tr>
+
+                <tr class="t-body" th:each="person : ${people}">
+                    <td class="title-column">
+                        <a class="list-reference" th:href="@{/readers/{id}(id=${person.getId()})}"
+                           th:text="${person.getFullName()}">name</a>
+                    </td>
+                    <td class="title-column">
+                        <a class="list-reference" th:href="@{/readers/{id}(id=${person.getId()})}"
+                           th:text="${person.getYearOfBirth()}">year</a>
+                    </td>
+                    <td class="img-column">
+                        <a class="no-underline-anchor" th:href="@{/readers/{id}/edit(id=${person.getId()})}">
+                            <img th:src="@{images/edit.png}" alt=""/>
+                        </a>
+                    </td>
+                    <td class="img-column">
+                        <a class="no-underline-anchor" th:href="@{/readers/{id}delete(id=${person.getId()})}">
+                            <img th:src="@{images/delete.png}" alt=""/>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
 <div th:insert="~{fragments/footer :: #footer-section}"></div>
 </body>
