@@ -2,36 +2,87 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Library: the book</title>
+    <link rel="stylesheet" th:href="@{../css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{../css/common.css}">
+    <link rel="stylesheet" th:href="@{../css/view-page.css}">
+    <link rel="stylesheet" th:href="@{../css/edit-page.css}">
+    <title>Library: book page</title>
 </head>
 <body>
-<h3>The book information</h3>
-<p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">title</p>
+<div th:insert="~{fragments/header :: #header-section}"></div>
 
-<div th:if="${owner}">
-    <span th:text="'The book is taken by: ' + ${owner.getFullName()}"/>
-    <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
-        <input type="submit" value="Release book">
-    </form>
-</div>
-<div th:if="${people}">
-    <span th:text="'The book is free. To whom to assign it?'"/>
-    <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
-        <label for="person">Choose a reader </label>
-        <select th:object="${person}" th:field="*{id}" id="person">
-            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"/>
-        </select>
-        <input type="submit" value="Assign"/>
-    </form>
+<div class="page-title-field">
+    <div class="page-title-align">
+        <img th:src="@{../images/book.png}" alt=""/>
+    </div>
 </div>
 
-<hr/>
-<form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
-    <input type="submit" value="Edit"/>
-</form>
-<br/>
-<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
+<div class="scrollable-panel">
+    <div class="form-wrapper">
+        <div class="element-name">
+            <span th:text="${book.getTitle()}" />
+            <a class="no-underline-anchor" th:href="@{/books/{id}/edit(id=${book.getId()})}">
+                <img th:src="@{../images/edit.png}" alt=""/>
+            </a>
+        </div>
+
+        <div class="element-fields">
+            <p>
+                <span class="element-fields-header" th:text="'Author: '"/>
+                <span class="text-color" th:text="${book.getAuthor()}"/>
+            </p>
+            <p>
+                <span class="element-fields-header" th:text="'Publication year: '"/>
+                <span class="text-color" th:text="${book.getPublicationYear()}"/>
+            </p>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="element-fields" th:if="${owner}">
+            <p>
+                <span class="element-fields-header" th:text="'The book is taken by: '"/>
+                <span class="text-color" th:text="${owner.getFullName()}"/>
+            </p>
+
+            <div class="spacer"></div>
+
+            <div class="button-section">
+                <form class="form-spacer-right" th:method="PATCH"
+                      th:action="@{/books/{id}/release(id=${book.getId()})}">
+                    <button class="green-submit-button" type="submit">Release book</button>
+                </form>
+                <form class="form-spacer-left" th:method="GET" th:action="@{/books}">
+                    <button class="red-cancel-button" type="submit">Escape</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="element-fields" th:if="${people}">
+            <span class="element-fields-header" th:text="'The book is free. To whom to assign it?'"/>
+            <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
+                <label for="person">Choose a reader </label>
+                <select class="select-field" th:object="${person}" th:field="*{id}" id="person">
+                    <option class="select-field" th:each="person : ${people}" th:value="${person.getId()}"
+                            th:text="${person.getFullName()}"/>
+                </select>
+
+                <div class="spacer"></div>
+
+                <div class="button-section">
+                    <form class="form-spacer-right">
+                        <button class="green-submit-button" type="submit">Assign book</button>
+                    </form>
+                    <form class="form-spacer-left" th:method="GET" th:action="@{/books}">
+                        <button class="red-cancel-button" type="submit">Escape</button>
+                    </form>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
 </body>
 </html>

@@ -2,28 +2,63 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Library: the reader</title>
+    <link rel="stylesheet" th:href="@{../css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{../css/common.css}">
+    <link rel="stylesheet" th:href="@{../css/view-page.css}">
+    <link rel="stylesheet" th:href="@{../css/edit-page.css}">
+    <title>Library: reader page</title>
 </head>
 <body>
-<h2>The reader information</h2>
-<p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">name</p>
+<div th:insert="~{fragments/header :: #header-section}"></div>
 
-<div th:if="${books.isEmpty()}">
-    <p th:text="'The man has not picked up any books yet'"/>
-</div>
-<div th:unless="${books.isEmpty()}">
-    <h3>Taken books:</h3>
-    <p th:each="book : ${books}" th:value="${book.getId()}" th:text="${book.getTitle()}"/>
+<div class="page-title-field">
+    <div class="page-title-align">
+        <img th:src="@{../images/person.png}" alt=""/>
+    </div>
 </div>
 
+<div class="scrollable-panel">
+    <div class="form-wrapper">
+        <div class="element-name">
+            <span th:text="${person.getFullName()}"/>
+            <a class="no-underline-anchor" th:href="@{/readers/{id}/edit(id=${person.getId()})}">
+                <img th:src="@{../images/edit.png}" alt=""/>
+            </a>
+        </div>
 
-<hr/>
-<form th:method="GET" th:action="@{/readers/{id}/edit(id=${person.getId()})}" th:object="${person}">
-    <input type="submit" value="Edit"/>
-</form>
-<br/>
-<form th:method="DELETE" th:action="@{/readers/{id}(id=${person.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
+        <div class="element-fields">
+            <p>
+                <span class="element-fields-header" th:text="'Year of birth: '"/>
+                <span class="text-color" th:text="${person.getYearOfBirth()}"/>
+            </p>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="element-fields" th:if="${books.isEmpty()}">
+            <p>
+                <span class="element-fields-header" th:text="'The man has not picked up any books yet'"/>
+            </p>
+        </div>
+        <div class="element-fields" th:unless="${books.isEmpty()}">
+            <div>
+                <span class="element-fields-header" th:text="'Taken books: '"/>
+                <br/>
+                <p class="elements-of-list" th:each="book : ${books}" th:value="${book.getId()}"
+                   th:text="${book.getTitle()}"/>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="button-section">
+            <form th:method="GET" th:action="@{/readers}">
+                <button class="red-cancel-button" type="submit">Escape</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
 </body>
 </html>

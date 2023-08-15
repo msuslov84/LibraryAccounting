@@ -71,7 +71,6 @@ public class BookController {
         return "redirect:/books";
     }
 
-
     @GetMapping("/search")
     public String search(Model model, @RequestParam(value = "query", required = false) String query) {
         if (query != null) {

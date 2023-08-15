@@ -26,6 +26,7 @@
                 <p class="add-book-title">Add new reader</p>
             </a>
         </div>
+
         <div class="elements-list">
             <table>
                 <tr class="t-header">
@@ -50,7 +51,7 @@
                         </a>
                     </td>
                     <td class="img-column">
-                        <a class="no-underline-anchor" th:href="@{/readers/{id}delete(id=${person.getId()})}">
+                        <a class="no-underline-anchor" th:href="@{/readers/{id}/delete(id=${person.getId()})}">
                             <img th:src="@{images/delete.png}" alt=""/>
                         </a>
                     </td>

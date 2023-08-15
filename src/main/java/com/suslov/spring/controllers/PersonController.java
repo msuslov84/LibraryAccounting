@@ -48,6 +48,12 @@ public class PersonController {
         return "readers/edit";
     }
 
+    @GetMapping("/{id}/delete")
+    public String edit(@PathVariable("id") int id) {
+        service.delete(id);
+        return "redirect:/readers";
+    }
+
     @PostMapping()
     public String create(@ModelAttribute("person") @Valid Person person,
                          BindingResult bindingResult) {
@@ -70,9 +76,9 @@ public class PersonController {
         return "redirect:/readers";
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        service.delete(id);
-        return "redirect:/readers";
-    }
+//    @DeleteMapping("/{id}")
+//    public String delete(@PathVariable("id") int id) {
+//        service.delete(id);
+//        return "redirect:/readers";
+//    }
 }

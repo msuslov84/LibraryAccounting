@@ -26,10 +26,13 @@
                 <p class="add-book-title">Add new book</p>
             </a>
         </div>
+
         <div class="elements-list">
             <table>
                 <tr class="t-header">
                     <th class="title-column">Title</th>
+                    <th class="title-column">Author</th>
+                    <th class="title-column">Publication year</th>
                     <th class="img-column">Edit</th>
                     <th class="img-column">Delete</th>
                 </tr>
@@ -37,20 +40,26 @@
                 <tr class="t-body" th:each="book : ${books}">
                     <td class="title-column">
                         <a class="list-reference" th:href="@{/books/{id}(id=${book.getId()})}"
-                           th:text="${book.getTitle() + ', ' + book.getAuthor() + ', '+ book.getPublicationYear()}">book</a>
+                           th:text="${book.getTitle()}">title</a>
                     </td>
-
+                    <td class="title-column">
+                        <a class="list-reference" th:href="@{/books/{id}(id=${book.getId()})}"
+                           th:text="${book.getAuthor()}">author</a>
+                    </td>
+                    <td class="title-column">
+                        <a class="list-reference" th:href="@{/books/{id}(id=${book.getId()})}"
+                           th:text="${book.getPublicationYear()}">year</a>
+                    </td>
                     <td class="img-column">
                         <a class="no-underline-anchor" th:href="@{/books/{id}/edit(id=${book.getId()})}">
                             <img th:src="@{images/edit.png}" alt=""/>
                         </a>
                     </td>
                     <td class="img-column">
-                        <a class="no-underline-anchor" th:href="@{/books/{id}delete(id=${book.getId()})}">
+                        <a class="no-underline-anchor" th:href="@{/books/{id}/delete(id=${book.getId()})}">
                             <img th:src="@{images/delete.png}" alt=""/>
                         </a>
                     </td>
-
                 </tr>
             </table>
         </div>
