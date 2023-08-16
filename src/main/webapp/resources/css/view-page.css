@@ -44,24 +44,18 @@
     width: 100%;
     min-width: calc(100% + 50px);
     height: 2px;
-    margin: 43px 0 77px 0;
+    margin: 10px 0 10px 0;
 
     background: var(--spacer-background);
     border-radius: 10px;
 }
 
-.section {
+.section-big {
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    margin: 40px 0 24px 0;
+    margin: 20px 0 0 0;
 }
-
-/*.position {*/
-/*    font-weight: 600;*/
-/*    font-size: 16px;*/
-/*    line-height: 25px;*/
-/*}*/
 
 .qualities {
     font-weight: 300;
@@ -135,7 +129,7 @@
 }
 
 .page-title-field {
-    height: 80px;
+    height: 115px;
     width: 100%;
 }
 

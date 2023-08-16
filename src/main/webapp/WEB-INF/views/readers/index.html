@@ -2,25 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{css/themes/main.css}">
-    <link rel="stylesheet" th:href="@{css/common.css}">
-    <link rel="stylesheet" th:href="@{css/list-page.css}">
+    <link rel="stylesheet" th:href="@{/css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/list-page.css}">
     <title>Library: readers</title>
 </head>
 <body>
 <div th:insert="~{fragments/header :: #header-section}"></div>
 
-<div class="page-title-field">
-    <div class="page-title-align">
-        <img th:src="@{images/person.png}" alt=""/>
-    </div>
-</div>
-
 <div class="scrollable-panel">
+    <div class="page-title-field">
+        <div class="page-title-align">
+            <img th:src="@{/images/person.png}" alt=""/>
+        </div>
+    </div>
+
     <div class="table-wrapper">
         <div class="add-book">
             <a class="no-underline-anchor" th:href="@{/readers/new}">
-                <img th:src="@{images/add.png}" alt=""/>
+                <img th:src="@{/images/add.png}" alt=""/>
             </a>
             <a class="text-anchor" th:href="@{/readers/new}">
                 <p class="add-book-title">Add new reader</p>
@@ -47,12 +47,12 @@
                     </td>
                     <td class="img-column">
                         <a class="no-underline-anchor" th:href="@{/readers/{id}/edit(id=${person.getId()})}">
-                            <img th:src="@{images/edit.png}" alt=""/>
+                            <img th:src="@{/images/edit.png}" alt=""/>
                         </a>
                     </td>
                     <td class="img-column">
                         <a class="no-underline-anchor" th:href="@{/readers/{id}/delete(id=${person.getId()})}">
-                            <img th:src="@{images/delete.png}" alt=""/>
+                            <img th:src="@{/images/delete.png}" alt=""/>
                         </a>
                     </td>
                 </tr>

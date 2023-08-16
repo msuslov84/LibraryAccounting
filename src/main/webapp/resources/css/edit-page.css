@@ -60,11 +60,18 @@ button {
     display: block;
 }
 
-.section {
-    font-size: 32px;
+.section-big {
+    font-size: 30px;
     line-height: 44px;
 
-    margin: 50px 0 0 0;
+    margin: 20px 0 0 0;
+}
+
+.section-small {
+    font-size: 20px;
+    line-height: 36px;
+
+    margin: 20px 0 0 0;
 }
 
 .field {
@@ -89,7 +96,7 @@ button {
     width: 100%;
     min-width: 100%;
     height: 2px;
-    margin: 40px 0 10px 0;
+    margin: 10px 0 10px 0;
 
     background: var(--spacer-background);
     border-radius: 10px;
@@ -140,7 +147,7 @@ button {
 
 .button-section {
     width: 100%;
-    margin: 40px 0 90px 0;
+    margin: 20px 0 20px 0;
     display: inline-flex;
 }
 

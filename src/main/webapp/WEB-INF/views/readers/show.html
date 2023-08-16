@@ -2,27 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{../css/themes/main.css}">
-    <link rel="stylesheet" th:href="@{../css/common.css}">
-    <link rel="stylesheet" th:href="@{../css/view-page.css}">
-    <link rel="stylesheet" th:href="@{../css/edit-page.css}">
+    <link rel="stylesheet" th:href="@{/css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/view-page.css}">
+    <link rel="stylesheet" th:href="@{/css/edit-page.css}">
     <title>Library: reader page</title>
 </head>
 <body>
 <div th:insert="~{fragments/header :: #header-section}"></div>
 
-<div class="page-title-field">
-    <div class="page-title-align">
-        <img th:src="@{../images/person.png}" alt=""/>
-    </div>
-</div>
-
 <div class="scrollable-panel">
+    <div class="page-title-field">
+        <div class="page-title-align">
+            <img th:src="@{/images/person.png}" alt=""/>
+        </div>
+    </div>
+
     <div class="form-wrapper">
         <div class="element-name">
             <span th:text="${person.getFullName()}"/>
             <a class="no-underline-anchor" th:href="@{/readers/{id}/edit(id=${person.getId()})}">
-                <img th:src="@{../images/edit.png}" alt=""/>
+                <img th:src="@{/images/edit.png}" alt=""/>
             </a>
         </div>
 
@@ -44,8 +44,8 @@
             <div>
                 <span class="element-fields-header" th:text="'Taken books: '"/>
                 <br/>
-                <p class="elements-of-list" th:each="book : ${books}" th:value="${book.getId()}"
-                   th:text="${book.getTitle()}"/>
+                <a class="elements-of-list" th:each="book : ${books}" th:href="@{/books/{id}(id=${book.getId()})}"
+                   th:text="${book.getTitle()}">title</a>
             </div>
         </div>
 

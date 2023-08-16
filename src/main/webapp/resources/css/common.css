@@ -1,6 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--body-background);
+}
+
 .header {
     height: 100px;
     width: 100%;
+
     background: var(--header-background);
 }
 
@@ -35,8 +43,8 @@
     height: 100px;
     width: 100%;
 
-    position:absolute;
-    bottom:0;
+    position: absolute;
+    bottom: 0;
 
     font-family: Arial, serif;
     font-style: normal;
@@ -61,8 +69,8 @@
 }
 
 .footer a {
-    display:table-cell;
-    vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .footer div {
