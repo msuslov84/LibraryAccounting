@@ -19,6 +19,13 @@
 
     <div class="table-wrapper">
         <div class="add-book">
+            <a class="no-underline-anchor" th:href="@{/books/search}">
+                <img th:src="@{/images/search.png}" alt=""/>
+            </a>
+            <a class="text-anchor" th:href="@{/books/search}">
+                <p class="add-book-title">Search book</p>
+            </a>
+
             <a class="no-underline-anchor" th:href="@{/books/new}">
                 <img th:src="@{/images/add.png}" alt=""/>
             </a>

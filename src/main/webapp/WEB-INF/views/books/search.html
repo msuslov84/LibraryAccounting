@@ -2,31 +2,68 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Library: searching</title>
+    <link rel="stylesheet" th:href="@{/css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/edit-page.css}">
+    <link rel="stylesheet" th:href="@{/css/view-page.css}">
+    <title>Library: search page</title>
 </head>
 <body>
-<h3>Book searching</h3>
+<div th:insert="~{fragments/header :: #header-section}"></div>
+
 <form th:method="GET" th:action="@{/books/search}">
-    <label for="query">Enter a search query: </label>
-    <input type="text" id="query" name="query"/>
-    <br/>
-    <input type="submit" value="Search"/>
+    <div class="scrollable-panel">
+        <div class="page-title-field">
+            <div class="page-title-align">
+                <img th:src="@{/images/book.png}" alt=""/>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <div class="section-small">Enter a search query:
+                <label>
+                    <input class="field" th:type="text" th:name="query" id="query" th:size="50">
+                </label>
+            </div>
+            <div class="button-section">
+                <form class="form-spacer-right">
+                    <button class="search-submit-button" type="submit">Search</button>
+                </form>
+                <form class="form-spacer-left" th:method="GET" th:action="@{/books}">
+                    <button class="red-cancel-button" type="submit">Return</button>
+                </form>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="element-fields" th:if="${books}">
+                <div th:if="${books.isEmpty()}">
+                    <p>
+                        <span class="element-fields-header" th:text="'Books not found'"/>
+                    </p>
+                </div>
+                <div th:unless="${books.isEmpty()}">
+                    <div>
+                        <span class="element-fields-header" th:text="'Found books: '"/>
+                        <br/>
+                        <div class="elements-of-list" th:each="book : ${books}">
+                            <a th:href="@{/books/{id}(id=${book.getId()})}"
+                               th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">title
+                            </a>
+                            <div th:if="${book.getOwner() != null}">
+                                <span th:text="'The book is taken now by: ' + ${book.getOwner().getFullName()}"/>
+                            </div>
+                            <div th:if="${book.getOwner() == null}">
+                                <span th:text="'The book is free'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-<br/>
-<div th:if="${books}">
-    <div th:if="${books.isEmpty()}">
-        <span th:text="'Books not found'"/>
-    </div>
-    <div th:each="book : ${books}">
-        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">title</p>
-        <div th:if="${book.getOwner() != null}">
-            <span th:text="'The book is taken now by: ' + ${book.getOwner().getFullName()}"/>
-        </div>
-        <div th:if="${book.getOwner() == null}">
-            <span th:text="'The book is free'"/>
-        </div>
-    </div>
-    <hr/>
-</div>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
 </body>
 </html>

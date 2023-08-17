@@ -184,3 +184,20 @@ button {
     box-shadow: 0 0 10px var(--save-button-background);
     background: var(--button-text-color);
 }
+
+.search-submit-button {
+    width: 200px;
+    margin-left: 25px;
+
+    color: var(--button-text-color);
+
+    border: 2px solid var(--search-button-background);
+    background: var(--search-button-background);
+}
+
+.search-submit-button:hover {
+    color: var(--search-button-background);
+    opacity: 0.8;
+    box-shadow: 0 0 10px var(--search-button-background);
+    background: var(--button-text-color);
+}
