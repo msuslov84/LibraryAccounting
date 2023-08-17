@@ -45,7 +45,9 @@
                 <span class="element-fields-header" th:text="'Taken books: '"/>
                 <br/>
                 <a class="elements-of-list" th:each="book : ${books}" th:href="@{/books/{id}(id=${book.getId()})}"
-                   th:text="${book.getTitle()}" th:style="${book.isOverdue()} ? 'color : red' : ''">title</a>
+                   th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}"
+                   th:style="${book.isOverdue()} ? 'color : red' : ''">title</a>
+                <br/>
             </div>
         </div>
 

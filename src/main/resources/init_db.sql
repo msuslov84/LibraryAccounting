@@ -14,16 +14,3 @@ CREATE TABLE book
     person_id INT     REFERENCES person (person_id) ON DELETE SET NULL,
     assigned_from TIMESTAMP
 );
-
--- Test data
-INSERT INTO person(name, year)
-VALUES ('Иванов Иван Иванович', 1970),
-       ('Петров Петр Петрович', 1960),
-       ('Алексеев Алексей Алексеевич', 1989),
-       ('Познер Владимир Владимирович', 1944),
-       ('Федоров Мирон Янович', 1985);
-
-INSERT INTO book(title, author, year)
-VALUES ('Над пропастью во ржи', 'Джером Сэринджер', 1951),
-       ('День опричника', 'Владимир Сорокин', 2006),
-       ('Тайные виды на гору Фудзи', 'Владимир Пелевин', 2018);
