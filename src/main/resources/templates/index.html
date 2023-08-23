@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <title>Library</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: #header-section}"></div>
+
+<div class="main-reference-wrapper">
+    <div class="main-reference">
+        <p>
+            <img th:src="@{/images/book_small.png}" alt=""/>
+            <a class="main-reference-color" href="books">BOOKS</a>
+        </p>
+        <p>
+            <img th:src="@{/images/person_small.png}" alt=""/>
+            <a class="main-reference-color" href="readers">READERS</a>
+        </p>
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
+</body>
+</html>
