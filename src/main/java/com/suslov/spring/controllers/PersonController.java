@@ -3,13 +3,12 @@ package com.suslov.spring.controllers;
 import com.suslov.spring.models.Person;
 import com.suslov.spring.services.PersonService;
 import com.suslov.spring.util.PersonValidator;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/readers")
@@ -49,7 +48,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}/delete")
-    public String edit(@PathVariable("id") int id) {
+    public String delete(@PathVariable("id") int id) {
         service.delete(id);
         return "redirect:/readers";
     }
@@ -75,10 +74,4 @@ public class PersonController {
         service.update(id, person);
         return "redirect:/readers";
     }
-
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") int id) {
-//        service.delete(id);
-//        return "redirect:/readers";
-//    }
 }

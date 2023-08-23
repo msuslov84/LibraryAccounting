@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/themes/main.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/edit-page.css}">
+    <link rel="stylesheet" th:href="@{/css/view-page.css}">
+    <title>Library: book page</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: #header-section}"></div>
+
+<form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+    <div class="scrollable-panel">
+        <div class="page-title-field">
+            <div class="page-title-align">
+                <img th:src="@{/images/book.png}" alt=""/>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <div class="section-big">Title of the book:
+                <label>
+                    <input class="field" th:type="text" th:field="*{title}" id="title" th:size="50">
+                </label>
+                <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</div>
+            </div>
+            <div class="section-small">Author full name:
+                <label>
+                    <input class="field" th:type="text" th:field="*{author}" id="author" th:size="50">
+                </label>
+                <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author error</div>
+            </div>
+            <div class="section-small">Publication year:
+                <label>
+                    <input class="field" th:type="text" th:field="*{publicationYear}" id="publicationYear" th:size="50">
+                </label>
+                <div style="color: red" th:if="${#fields.hasErrors('publicationYear')}" th:errors="*{publicationYear}">
+                    Year error
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="button-section">
+                <form class="form-spacer-right">
+                    <button class="green-submit-button" type="submit">Refresh</button>
+                </form>
+                <form class="form-spacer-left" th:method="GET" th:action="@{/books}">
+                    <button class="red-cancel-button" type="submit">Cancel</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div th:insert="~{fragments/footer :: #footer-section}"></div>
+</body>
+</html>
