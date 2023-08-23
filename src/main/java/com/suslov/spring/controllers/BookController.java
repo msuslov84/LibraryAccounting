@@ -4,13 +4,13 @@ import com.suslov.spring.models.Book;
 import com.suslov.spring.models.Person;
 import com.suslov.spring.services.BookService;
 import com.suslov.spring.services.PersonService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -113,10 +113,4 @@ public class BookController {
         bookService.release(id);
         return "redirect:/books/" + id;
     }
-
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") int id) {
-//        bookService.delete(id);
-//        return "redirect:/books";
-//    }
 }
