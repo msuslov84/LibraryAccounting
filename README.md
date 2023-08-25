@@ -13,7 +13,7 @@
 Приложение было задеплоено на собственный сервер, ознакомиться с ним можно по ссылке: http://webprojects-demo.ru/library
 
 При реализации проекта были задействованы следующие технологии:
-- **Java 17**, **Spring Framework** (**Spring Boot**, **Spring Core**, **Spring MVC**, **Spring Validator**) - для разработки;
+- **Java 11**, **Spring Framework** (**Core**, **MVC**, **Validator**) c миграцией на **Spring Boot** - для разработки;
 - **PostgreSQL** - для организации хранения данных в БД; 
 - **Spring Data JPA** - для работы с БД;
 - **HTML**, **Thymeleaf**, **CSS** - для реализации UI;
