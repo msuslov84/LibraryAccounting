@@ -1,9 +1,9 @@
-package com.suslov.spring.controllers;
+package com.suslov.spring.controllers.rest;
 
 import com.suslov.spring.models.Person;
 import com.suslov.spring.services.PersonService;
 import com.suslov.spring.util.PersonValidator;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
