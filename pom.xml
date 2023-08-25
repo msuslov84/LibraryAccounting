@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <finalName>library1</finalName>
+        <finalName>library</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
